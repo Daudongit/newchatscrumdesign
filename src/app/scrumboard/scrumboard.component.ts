@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Title} from "@angular/platform-browser";
+import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-scrumboard',
@@ -8,7 +10,7 @@ import {Title} from "@angular/platform-browser";
 })
 export class ScrumboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     this.load()
@@ -21,9 +23,17 @@ export class ScrumboardComponent implements OnInit {
   public alert
   
   load(){
+    if (window.localStorage) {
+      if (!localStorage.getItem('firstLoad')) {
+        localStorage['firstLoad'] = true;
+        window.location.reload();
+      }
+      else
+        localStorage.removeItem('firstLoad');
+    }
     window.onload = function() {
       $(".preloader").slideUp(1300);
-    };
+    }; 
   }
 
   NotificationBox(alert) {
@@ -43,12 +53,18 @@ export class ScrumboardComponent implements OnInit {
     let openEditTaskModal = document.getElementById("editTaskModal") as HTMLElement;
     let uploadImageModal = document.getElementById("uploadImageModal") as HTMLElement;
     let taskHistoryModal = document.getElementById("taskHistoryModal") as HTMLElement;
+    let logoutModal = document.getElementById("logoutModal") as HTMLElement;
+    let appInfoModal = document.getElementById("appInfoModal") as HTMLElement;
+    let userProfileModal = document.getElementById("userProfileModal") as HTMLElement;
     moda.style.display = "none";
     moda1.style.display = "none";
     hides.style.overflowY = "scroll";
     openEditTaskModal.style.display = "none";
     uploadImageModal.style.display = "none";
     taskHistoryModal.style.display = "none";
+    logoutModal.style.display = "none";
+    appInfoModal.style.display = "none";
+    userProfileModal.style.display = "none";
 
     
   }
@@ -58,7 +74,7 @@ export class ScrumboardComponent implements OnInit {
     openEditTaskModal.style.display = "block";
   }
 
-  uploadImage() {
+  uploadImage () {
     let uploadImageModal = document.getElementById("uploadImageModal") as HTMLElement;
     uploadImageModal.style.display = "block";
   }
@@ -68,6 +84,20 @@ export class ScrumboardComponent implements OnInit {
     taskHistoryModal.style.display = "block";
   }
 
+  userProfile () {
+    let userProfileModal = document.getElementById("userProfileModal") as HTMLElement;
+    userProfileModal.style.display = "block"
+  }
+
+  appInfo () {
+    let appInfoModal = document.getElementById("appInfoModal") as HTMLElement;
+    appInfoModal.style.display = "block"
+  }
+
+  logout () {
+    let logoutModal = document.getElementById("logoutModal") as HTMLElement;
+    logoutModal.style.display = "block"
+  }
 
 
   rose(){
@@ -83,13 +113,29 @@ export class ScrumboardComponent implements OnInit {
 
     let taskHistoryModal = document.getElementById("taskHistoryModal") as HTMLElement;
 
+    let userProfileModal = document.getElementById("userProfileModal") as HTMLElement;
+    let logoutModal = document.getElementById("logoutModal") as HTMLElement;
+    let appInfoModal = document.getElementById("appInfoModal") as HTMLElement;
+
     let hides = document.getElementById("splitLeft") as HTMLElement;
+
+    let ttAddTask = document.getElementById("ttAddTaskBtn") as HTMLElement;
+    let ttAddNote = document.getElementById("ttAddNoteBtn") as HTMLElement;
+    let ttUserHistory = document.getElementById("ttUserHistoryBtn") as HTMLElement;
 
     btnmod.onclick = function () {
       modal.style.display = "block";
     }
 
+    ttAddTask.onclick = function () {
+      modal.style.display = "block";
+    }
+
     btnmod1.onclick = function () {
+      modal1.style.display = "block";
+    }
+
+    ttAddNote.onclick = function () {
       modal1.style.display = "block";
     }
 
@@ -115,6 +161,39 @@ export class ScrumboardComponent implements OnInit {
         taskHistoryModal.style.display = "none";
         hides.style.overflowY = "scroll";
       }
+
+      if (event.target == userProfileModal) {
+        userProfileModal.style.display = "none";
+        hides.style.overflowY = "scroll";
+      }
+
+      if (event.target == appInfoModal) {
+        appInfoModal.style.display = "none";
+        hides.style.overflowY = "scroll";
+      }
+
+      if (event.target == logoutModal) {
+        logoutModal.style.display = "none";
+        hides.style.overflowY = "scroll";
+      }
+
+    }
+
+    window.onclick = function (event) {
+      let project = document.getElementsByClassName("projectsDropDown");
+      // if (event.target.matches("#projectTab")) {
+      //   // let projectDrop = document.getElementsByClassName("projectsDropDownContent");
+      //   // let i;
+      //   // for (i = 0; i < projectDrop.length; i++) {
+      //   //   let openProjectDropdown = projectDrop[i];
+      //   //   if (openProjectDropdown.classList.contains('ppDD')) {
+      //   //     openProjectDropdown.classList.remove('ppDD');
+      //   //   }
+      //   // }
+      //   console.log('outside')
+      // } else {
+      //   console.log('inside')
+      // }
     }
   }
 
@@ -141,6 +220,7 @@ export class ScrumboardComponent implements OnInit {
     }
   }
 
+
   imageUploadAlert () {
     let name = document.getElementById('imgUpload') as HTMLInputElement;
     let uploadImageModal = document.getElementById("uploadImageModal") as HTMLElement;
@@ -158,6 +238,54 @@ export class ScrumboardComponent implements OnInit {
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
     this.NotificationBox("Copied to clipboard!")
+  }
+
+  showTeamTaskDropDown() {
+    let dropDownCBtn = document.getElementById('ttDropDown');
+    let toggled = document.getElementById('toggledDown');
+    let untoggled = document.getElementById('toggledUp');
+    let ttDropDownMenu = document.getElementById('teamTaskDropDownMenu');
+    
+    dropDownCBtn.classList.toggle('showDropDown');
+    ttDropDownMenu.classList.toggle('teamTaskDropDownMenuToggle');
+    
+    
+    if (untoggled.className == 'fas fa-chevron-up') {
+      untoggled.className = ('fas fa-chevron-down')
+    } else if (untoggled.className == 'fas fa-chevron-down') {
+      untoggled.className = ('fas fa-chevron-up')
+    }
+    
+    
+  }
+
+  hideAddTaskandNoteBTN() {
+    document.getElementById('addTaskBtn').style.display = 'none';
+    document.getElementById('addNoteBtn').style.display = 'none';
+
+  }
+
+  showAddTaskandNoteBTN() {
+    document.getElementById('addTaskBtn').style.display = 'block';
+    document.getElementById('addNoteBtn').style.display = 'block';
+
+  }
+
+  showProjectTabContents() {
+    let projectDropDown = document.getElementById("projectsDDContent") as HTMLElement;
+    projectDropDown.classList.toggle("ppDD");
+  }
+
+  selectThemeTabContents() {
+    let projectDropDown = document.getElementById("themeDDContent") as HTMLElement;
+    projectDropDown.classList.toggle("ppDD");
+  }
+
+  
+
+  showSprintTabContents() {
+    let sprintDropDown = document.getElementById("sprintDDContent") as HTMLElement;
+    sprintDropDown.classList.toggle("spDD");
   }
 
    

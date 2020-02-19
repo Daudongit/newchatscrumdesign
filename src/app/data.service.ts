@@ -109,9 +109,9 @@ export class DataService {
  createUser()
   {
     console.log(this.add_slack)
-    this.http.post(this.domain_protocol + this.domain_name + '/scrum/api/scrumusers/', JSON.stringify({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname}), this.httpOptions).subscribe(
+    //this.http.post(this.domain_protocol + this.domain_name + '/scrum/api/scrumusers/', JSON.stringify({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname}), this.httpOptions).subscribe(
     //console.log({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname})
-   //this.http.post(this._signUpurl, JSON.stringify({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname}), this.httpOptions).subscribe(
+   this.http.post(this._signUpurl, JSON.stringify({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname}), this.httpOptions).subscribe(
         data => { 
           // this.slack_app_id = data['client_id']
           // if (this.createuser_usertype  == "Owner" && this.add_slack == true ) {
@@ -186,7 +186,8 @@ export class DataService {
 
   login()
   {
-    this.http.post(this.domain_protocol + this.domain_name + '/scrum/api-token-auth/', JSON.stringify({'username': this.login_username, 'password': this.login_password, 'project': this.login_project}), this.httpOptions).subscribe(
+    this.http.post(this._loginurl, JSON.stringify({'username': this.login_username, 'password': this.login_password, 'project': this.login_project}), this.httpOptions).subscribe(
+    //this.http.post(this.domain_protocol + this.domain_name + '/scrum/api-token-auth/', JSON.stringify({'username': this.login_username, 'password': this.login_password, 'project': this.login_project}), this.httpOptions).subscribe(
         data => {
             sessionStorage.setItem('username', this.login_username);
             sessionStorage.setItem('realname', data['name']);
@@ -205,17 +206,14 @@ export class DataService {
             this.realname = data['name'];
             this.project = data['project_id'];
             this.to_clear_board = data['to_clear_board'];
-            console.log(this.to_clear_board)
             this.user_slack = data['user_slack'];
             this.project_slack = data['project_slack'];
             this.slack_username = data['slack_username'];
-            console.log(data['slack_username'])
             this.message = 'Welcome!';
-            this.router.navigate(['profile']);
+            this.router.navigate(['scrumboard']);
             this.login_username = '';
             this.login_password = '';
             this.login_project = '';
-            console.log(data);
             
             this.authOptions = {
                 headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': 'JWT ' + data['token']})
@@ -234,6 +232,10 @@ export class DataService {
             this.login_project = '';
         }
     );
+  }
+
+  loggedIn() {
+    return localStorage.getItem('token')
   }
 
   
