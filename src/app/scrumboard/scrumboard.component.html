@@ -80,17 +80,17 @@
                     <div class="themeDropDown" (click)="selectThemeTabContents()">
                         <a class="nav-link otherNavTools" id="themeTab" role="tab">
                             <h4>Theme</h4>
-                            <span class="currentTheme">Plain</span>
+                            <span class="currentTheme" id="currentTheme">{{currentTheme}}</span>
                         </a>
 
                         <div id="themeDDContent" class="themeDropDownContent">
                             <div class="imgContainer">
-                                <div class="imgGrid"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123620/Group_2_ln6kmn.png" class="imgGridBorder"></div>
-                                <div class="imgGrid"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123545/Rectangle_3_ozeffe.png"></div>
-                                <div class="imgGrid"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123544/Rectangle_3.1_mz3gr1.png"></div>
-                                <div class="imgGrid"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123544/Rectangle_3.3_bhbayg.png"></div>
-                                <div class="imgGrid"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123544/Rectangle_3.4_sh4f7a.png"></div>
-                                <div class="imgGrid"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123544/Rectangle_3.5_z9lfmx.png"></div>
+                                <div class="imgBtm"><div class="imgGrid" id="plainTheme"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123620/Group_2_ln6kmn.png" (click)="useDefaultTheme('theme')" alt="Plain Theme" title="Plain Theme" class="themeImg"></div></div>
+                                <div class="imgBtm"><div class="imgGrid" id="automobileTheme"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123545/Rectangle_3_ozeffe.png" (click)="useDefaultTheme('theme1')" alt="Automobile Theme" title="Automobile Theme" class="themeImg"></div></div>
+                                <div class="imgBtm"><div class="imgGrid" id="darkCloudTheme"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123544/Rectangle_3.1_mz3gr1.png" (click)="useDefaultTheme('theme2')" alt="Dark Clound Theme" title="Dark Cloud Theme" class="themeImg"></div></div>
+                                <div class="imgBtm"><div class="imgGrid" id="landmarkTheme"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123544/Rectangle_3.3_bhbayg.png" (click)="useDefaultTheme('theme3')" alt="Landmark Theme" title="Landmark Theme" class="themeImg"></div></div>
+                                <div class="imgBtm"><div class="imgGrid" id="cityviewTheme"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123544/Rectangle_3.4_sh4f7a.png" (click)="useDefaultTheme('theme4')" alt="City View Theme" title="City View Theme" class="themeImg"></div></div>
+                                <div class="imgBtm"><div class="imgGrid" id="blueskyTheme"><img src="https://res.cloudinary.com/ros4eva/image/upload/v1582123544/Rectangle_3.5_z9lfmx.png" (click)="useDefaultTheme('theme5')" alt="Blue Sky Theme" title="Blue Sky Theme" class="themeImg"></div></div>
                             </div>
                         </div>
                     </div>
@@ -115,21 +115,6 @@
 
         </div>
 
-
-        <!-- <div class="navbarw3">
-            <a href="#home">Home</a>
-            <a href="#news">News</a>
-            <div class="dropdownw3">
-                <button class="dropbtn">Dropdown
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-contentw3">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                </div>
-            </div>
-        </div> -->
     </nav>
 
     <div class="main">
@@ -576,7 +561,7 @@
                                             <n style="margin-right: 9px;">600</n>
                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                 (click)="editTask()"></span>
-                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools" alt="copy"
                                                 title="copy" style="font-size: 15px;" (click)="copyToClipboard('div1')"></i>
                                             <i class="fas fa-envelope tools" alt="task chat" title="task chat"></i> <i
@@ -601,7 +586,7 @@
                                             <n style="margin-right: 9px;">600</n>
                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                 (click)="editTask()"></span>
-                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools" alt="copy"
                                                 title="copy" style="font-size: 15px;" (click)="copyToClipboard('div1')"></i>
                                             <i class="fas fa-envelope tools" alt="task chat" title="task chat"></i> <i
@@ -624,7 +609,7 @@
                                             <n style="margin-right: 9px;">600</n>
                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                 (click)="editTask()"></span>
-                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools" alt="copy"
                                                 title="copy" style="font-size: 15px;" (click)="copyToClipboard('div1')"></i>
                                             <i class="fas fa-envelope tools" alt="task chat" title="task chat"></i> <i
@@ -640,7 +625,7 @@
                                             <n style="margin-right: 9px;">600</n>
                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                 (click)="editTask()"></span>
-                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools" alt="copy"
                                                 title="copy" style="font-size: 15px;" (click)="copyToClipboard('div1')"></i>
                                             <i class="fas fa-envelope tools" alt="task chat" title="task chat"></i> <i
@@ -662,7 +647,7 @@
                                             <n style="margin-right: 9px;">600</n>
                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                 (click)="editTask()"></span>
-                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools" alt="copy"
                                                 title="copy" style="font-size: 15px;" (click)="copyToClipboard('div1')"></i>
                                             <i class="fas fa-envelope tools" alt="task chat" title="task chat"></i> <i
@@ -684,7 +669,7 @@
                                             <n style="margin-right: 9px;">600</n>
                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                 (click)="editTask()"></span>
-                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools" alt="copy"
                                                 title="copy" style="font-size: 15px;" (click)="copyToClipboard('div1')"></i>
                                             <i class="fas fa-envelope tools" alt="task chat" title="task chat"></i> <i
@@ -707,7 +692,7 @@
                                             <n style="margin-right: 9px;">600</n>
                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                 (click)="editTask()"></span>
-                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools" alt="copy"
                                                 title="copy" style="font-size: 15px;" (click)="copyToClipboard('div1')"></i>
                                             <i class="fas fa-envelope tools" alt="task chat" title="task chat"></i> <i
@@ -741,7 +726,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -762,7 +747,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -818,7 +803,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -847,7 +832,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -873,7 +858,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -891,7 +876,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -918,7 +903,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -945,7 +930,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -970,7 +955,7 @@
                                                     <n style="margin-right: 9px;">600</n>
                                                     <span class="icon-pencil tools" alt="edit" title="edit"
                                                         (click)="editTask()"></span>
-                                                    <span class="icon-camera tools" alt="upload" title="upload"
+                                                    <span class="icon-camera tools" alt="upload image" title="upload image"
                                                         (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                         alt="copy" title="copy" style="font-size: 15px;"
                                                         (click)="copyToClipboard('div1')"></i>
@@ -1006,7 +991,7 @@
                                                             <n style="margin-right: 9px;">600</n>
                                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                                 (click)="editTask()"></span>
-                                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                                 alt="copy" title="copy" style="font-size: 15px;"
                                                                 (click)="copyToClipboard('div1')"></i>
@@ -1031,7 +1016,7 @@
                                                             <n style="margin-right: 9px;">600</n>
                                                             <span class="icon-pencil tools" alt="edit" title="edit"
                                                                 (click)="editTask()"></span>
-                                                            <span class="icon-camera tools" alt="upload" title="upload"
+                                                            <span class="icon-camera tools" alt="upload image" title="upload image"
                                                                 (click)="uploadImage()"></span><i class="fas fa-clone tools"
                                                                 alt="copy" title="copy" style="font-size: 15px;"
                                                                 (click)="copyToClipboard('div1')"></i>
@@ -1051,7 +1036,7 @@
                             </div>
                         </div>
     
-                        <div class="teamTaskDropDownMenu" id="teamTaskDropDownMenu"
+                        <div class="teamTaskDropDownMenu secondTeamtask" id="teamTaskDropDownMenu1"
                             style="background: rgba(89, 187, 30, 0.1);">
                             <div>
                                 <img src="https://res.cloudinary.com/ros4eva/image/upload/v1581553992/Ellipse_3_fb4kdi.svg">
@@ -1097,7 +1082,6 @@
                                     </li>
                                     <li><i id="toggledUp" class="fas fa-chevron-up" (click)="showTeamTaskDropDown()"
                                             style="background:#DDA448;"></i></li>
-                                    <!-- <li id="toggledDown"><i class="fas fa-chevron-down" (click)="showTeamTaskDropDown()"></i></li> -->
                                 </ul>
                             </div>
                         </div>

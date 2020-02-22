@@ -16,11 +16,12 @@ export class ScrumboardComponent implements OnInit {
     this.load()
     this.rose()
     this.close()
+    this.closeAllDropDown()
     // this.imageName()
   }
 
   public imgName = "No image selected";
-  public alert
+  public alert;
   
   load(){
     if (window.localStorage) {
@@ -33,7 +34,60 @@ export class ScrumboardComponent implements OnInit {
     }
     window.onload = function() {
       $(".preloader").slideUp(1300);
-    }; 
+      let imgBorder1 = document.getElementsByClassName('themeImg').item(0) as HTMLElement;
+      let imgBorder2 = document.getElementsByClassName('themeImg').item(1) as HTMLElement;
+      let imgBorder3 = document.getElementsByClassName('themeImg').item(2) as HTMLElement;
+      let imgBorder4 = document.getElementsByClassName('themeImg').item(3) as HTMLElement;
+      let imgBorder5 = document.getElementsByClassName('themeImg').item(4) as HTMLElement;
+      let imgBorder6 = document.getElementsByClassName('themeImg').item(5) as HTMLElement;
+
+      let imgBtm1 = document.getElementsByClassName('imgBtm').item(0) as HTMLElement;
+      let imgBtm2 = document.getElementsByClassName('imgBtm').item(1) as HTMLElement;
+      let imgBtm3 = document.getElementsByClassName('imgBtm').item(2) as HTMLElement;
+      let imgBtm4 = document.getElementsByClassName('imgBtm').item(3) as HTMLElement;
+      let imgBtm5 = document.getElementsByClassName('imgBtm').item(4) as HTMLElement;
+      let imgBtm6 = document.getElementsByClassName('imgBtm').item(5) as HTMLElement;
+
+      let currentTheme = document.getElementById('currentTheme');
+      if (localStorage.getItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q') == 'Z556fbesgMPvm2U') {
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211899/Rectangle_4_whcw4u.png)";
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Automobile";
+        currentTheme.style.marginLeft = "-22px";
+        imgBorder2.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm2.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      } else if (localStorage.getItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q') == 'CArCK4Vm5hyRF5B') {
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211925/Rectangle_5_kflvow.png)";
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Dark Cloud";
+        currentTheme.style.marginLeft = "-22px";
+        imgBorder3.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm3.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      } else if (localStorage.getItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q') == '32J94BFgeC9zTNf') {
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211929/Rectangle_6_bmdatg.png)";
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Landmark";
+        currentTheme.style.marginLeft = "-30px";
+        imgBorder4.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm4.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      } else if (localStorage.getItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q') == 'ShFzC9vBEcFz8Rk') {
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211924/Rectangle_7_dff7kq.png)";
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "City View";
+        currentTheme.style.marginLeft = "-30px";
+        imgBorder5.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm5.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      } else if (localStorage.getItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q') == 'XB8svCwGLr359na') {
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211913/Rectangle_8_rieqnp.png)";
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Blue Sky";
+        currentTheme.style.marginLeft = "-36px";
+        imgBorder6.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm6.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      } else {
+        document.getElementById("splitLeft").style.background = "white";
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Plain";
+        currentTheme.style.marginLeft = "-55px";
+        imgBorder1.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm1.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      }
+    };
+  
   }
 
   NotificationBox(alert) {
@@ -179,22 +233,6 @@ export class ScrumboardComponent implements OnInit {
 
     }
 
-    window.onclick = function (event) {
-      let project = document.getElementsByClassName("projectsDropDown");
-      // if (event.target.matches("#projectTab")) {
-      //   // let projectDrop = document.getElementsByClassName("projectsDropDownContent");
-      //   // let i;
-      //   // for (i = 0; i < projectDrop.length; i++) {
-      //   //   let openProjectDropdown = projectDrop[i];
-      //   //   if (openProjectDropdown.classList.contains('ppDD')) {
-      //   //     openProjectDropdown.classList.remove('ppDD');
-      //   //   }
-      //   // }
-      //   console.log('outside')
-      // } else {
-      //   console.log('inside')
-      // }
-    }
   }
 
   hideslackchat() {
@@ -245,6 +283,7 @@ export class ScrumboardComponent implements OnInit {
     let toggled = document.getElementById('toggledDown');
     let untoggled = document.getElementById('toggledUp');
     let ttDropDownMenu = document.getElementById('teamTaskDropDownMenu');
+    let ttDropDownMenu1 = document.getElementById('teamTaskDropDownMenu1');
     
     dropDownCBtn.classList.toggle('showDropDown');
     ttDropDownMenu.classList.toggle('teamTaskDropDownMenuToggle');
@@ -252,8 +291,11 @@ export class ScrumboardComponent implements OnInit {
     
     if (untoggled.className == 'fas fa-chevron-up') {
       untoggled.className = ('fas fa-chevron-down')
+      ttDropDownMenu1.style.marginTop = "1100px"
+
     } else if (untoggled.className == 'fas fa-chevron-down') {
       untoggled.className = ('fas fa-chevron-up')
+      ttDropDownMenu1.style.marginTop = "20px"
     }
     
     
@@ -273,20 +315,178 @@ export class ScrumboardComponent implements OnInit {
 
   showProjectTabContents() {
     let projectDropDown = document.getElementById("projectsDDContent") as HTMLElement;
-    projectDropDown.classList.toggle("ppDD");
+    projectDropDown.classList.add("ppDD");
   }
 
   selectThemeTabContents() {
-    let projectDropDown = document.getElementById("themeDDContent") as HTMLElement;
-    projectDropDown.classList.toggle("ppDD");
+    let themeDropDown = document.getElementById("themeDDContent") as HTMLElement;
+    themeDropDown.classList.add("ppDD");
   }
-
-  
 
   showSprintTabContents() {
     let sprintDropDown = document.getElementById("sprintDDContent") as HTMLElement;
-    sprintDropDown.classList.toggle("spDD");
+    sprintDropDown.classList.add("spDD");
   }
 
+  closeAllDropDown() {
+    function hideDropDown(element, classToRemove, classToAdd) {
+      element.classList.remove(classToRemove)
+      element.classList.add(classToAdd)
+    }
+    window.onclick = function (e) {
+      let projectDD = document.getElementById('projectsDDContent') as HTMLElement;
+      let themeDD = document.getElementById('themeDDContent') as HTMLElement;
+      let sprintDD = document.getElementById('sprintDDContent') as HTMLElement;
+      let target = e.target as HTMLElement
+      if (target.matches('a#themeTab') || target.matches('span#currentTheme')) {
+        hideDropDown(themeDD, undefined ,'ppDD')
+      } else if (target.matches('img.themeImg')) {
+        hideDropDown(themeDD, undefined,'ppDD')
+      } else if (target.matches('a#sprintTab') || target.matches('span.loggedSprint')) {
+        hideDropDown(sprintDD, undefined,'spDD')
+      } else if (target.matches('a#projectsTab') || target.matches('span.loggedProject')) {
+        hideDropDown(projectDD, undefined, 'ppDD')
+      } else {
+        document.getElementById('projectsDDContent').classList.add('animateDD');
+        document.getElementById('sprintDDContent').classList.add('animateDD');
+        document.getElementById('themeDDContent').classList.add('animateDD');
+        setTimeout("document.getElementById('projectsDDContent').classList.remove('ppDD')", 1000);
+        setTimeout("document.getElementById('sprintDDContent').classList.remove('spDD')", 1000);
+        setTimeout("document.getElementById('themeDDContent').classList.remove('ppDD')", 1000);
+        setTimeout("document.getElementById('projectsDDContent').classList.remove('animateDD')", 1000);
+        setTimeout("document.getElementById('sprintDDContent').classList.remove('animateDD')", 1000);
+        setTimeout("document.getElementById('themeDDContent').classList.remove('animateDD')", 1000);
+      }
+    }
+  }
+
+  useDefaultTheme(theme) {
+    let imgBorder1 = document.getElementsByClassName('themeImg').item(0) as HTMLElement;
+    let imgBorder2 = document.getElementsByClassName('themeImg').item(1) as HTMLElement;
+    let imgBorder3 = document.getElementsByClassName('themeImg').item(2) as HTMLElement;
+    let imgBorder4 = document.getElementsByClassName('themeImg').item(3) as HTMLElement;
+    let imgBorder5 = document.getElementsByClassName('themeImg').item(4) as HTMLElement;
+    let imgBorder6 = document.getElementsByClassName('themeImg').item(5) as HTMLElement;
+
+    let imgBtm1 = document.getElementsByClassName('imgBtm').item(0) as HTMLElement;
+    let imgBtm2 = document.getElementsByClassName('imgBtm').item(1) as HTMLElement;
+    let imgBtm3 = document.getElementsByClassName('imgBtm').item(2) as HTMLElement;
+    let imgBtm4 = document.getElementsByClassName('imgBtm').item(3) as HTMLElement;
+    let imgBtm5 = document.getElementsByClassName('imgBtm').item(4) as HTMLElement;
+    let imgBtm6 = document.getElementsByClassName('imgBtm').item(5) as HTMLElement;
+
+    function clearBtmBorder() {
+      imgBorder1.style.removeProperty('border');
+      imgBtm1.style.removeProperty('border');
+
+      imgBorder2.style.removeProperty('border');
+      imgBtm2.style.removeProperty('border');
+
+      imgBorder3.style.removeProperty('border');
+      imgBtm3.style.removeProperty('border');
+
+      imgBorder4.style.removeProperty('border');
+      imgBtm4.style.removeProperty('border');
+
+      imgBorder5.style.removeProperty('border');
+      imgBtm5.style.removeProperty('border');
+
+      imgBorder6.style.removeProperty('border');
+      imgBtm6.style.removeProperty('border');
+    }
+
+
+    let currentTheme = document.getElementById('currentTheme');
+    if (theme == "theme1") {
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q', 'Z556fbesgMPvm2U')
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211899/Rectangle_4_whcw4u.png)"
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Automobile";
+        currentTheme.style.marginLeft = "-22px";
+        clearBtmBorder()
+        imgBorder2.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm2.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+
+      } else {
+        clearBtmBorder()
+        document.getElementById("splitLeft").style.background = "white";
+        imgBorder2.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm2.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      }
+    } else if (theme == "theme2") {
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q', 'CArCK4Vm5hyRF5B')
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211925/Rectangle_5_kflvow.png)"
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Dark Cloud";
+        currentTheme.style.marginLeft = "-22px";
+        clearBtmBorder()
+        imgBorder3.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm3.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+
+      } else {
+        clearBtmBorder()
+        document.getElementById("splitLeft").style.background = "white";
+        imgBorder3.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm3.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      }
+    } else if (theme == "theme3") {
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q', '32J94BFgeC9zTNf')
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211929/Rectangle_6_bmdatg.png)"
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Landmark";
+        currentTheme.style.marginLeft = "-30px";
+        clearBtmBorder()
+        imgBorder4.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm4.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+
+      } else {
+        clearBtmBorder()
+        document.getElementById("splitLeft").style.background = "white";
+        imgBorder4.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm4.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      }
+    } else if (theme == "theme4") {
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q', 'ShFzC9vBEcFz8Rk')
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211924/Rectangle_7_dff7kq.png)"
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "City View";
+        currentTheme.style.marginLeft = "-30px";
+        clearBtmBorder()
+        imgBorder5.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm5.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+
+      } else {
+        clearBtmBorder()
+        document.getElementById("splitLeft").style.background = "white";
+        imgBorder5.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm5.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      }
+    } else if (theme == "theme5") {
+      if (typeof (Storage) !== "undefined") {
+        localStorage.setItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q', 'XB8svCwGLr359na')
+        document.getElementById("splitLeft").style.backgroundImage = "url(https://res.cloudinary.com/ros4eva/image/upload/v1582211913/Rectangle_8_rieqnp.png)"
+        document.getElementsByClassName('currentTheme')[0].innerHTML = "Blue Sky";
+        currentTheme.style.marginLeft = "-36px";
+        clearBtmBorder()
+        imgBorder6.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm6.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+
+      } else {
+        clearBtmBorder()
+        document.getElementById("splitLeft").style.background = "white";
+        imgBorder6.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+        imgBtm6.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+      }
+    } else {
+      localStorage.removeItem('w5tD6g7Z65evGCeKvCrgeDJpkk9zETRc7Vg3Cw4q')
+      document.getElementById("splitLeft").style.background = "white";
+      document.getElementsByClassName('currentTheme')[0].innerHTML = "Plain";
+      currentTheme.style.marginLeft = "-55px";
+      clearBtmBorder()
+      imgBorder1.style.border = '1px solid rgba(0, 0, 0, 0.8)';
+      imgBtm1.style.borderBottom = '1px solid rgba(0, 0, 0, 0.8)';
+    }
+
+  }
    
 }

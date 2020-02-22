@@ -122,7 +122,6 @@ body {
 .left {
   width: 76%;
   left: 0;
-  background-color: white;
   /* overflow-x: auto; */
 }
 
@@ -149,7 +148,7 @@ body {
 
 .ex {
   z-index:3;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   border-radius: 10px;
@@ -163,7 +162,7 @@ body {
 .ex .excontent {
   
   background: #FFFFFF;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   padding: 7px;
   text-align: left;
@@ -174,6 +173,7 @@ body {
   line-height: 18px;
   color: rgba(0, 0, 0, 0.9);
   margin-bottom: 1.6em;
+  transition: ease-in 0.5s;
 }
 
 .ex .excontent .scrumtools {
@@ -184,6 +184,7 @@ body {
   padding-top: 20px;
   color: rgba(0, 0, 0, 0.5);
   margin-bottom: 3px;
+  transition: ease-in 0.2s;
 }
 
 .ex .excontent  n {
@@ -193,12 +194,14 @@ body {
 .ex .excontent .scrumtools span {
   font-size: 15px; 
   margin-right: 8px;
+  transition: ease-in 0.2s;
   
 }
 
 .ex .excontent .scrumtools i {
   font-size: 16px; 
   margin-right: 8px;
+  transition: ease-in 0.2s;
   
 }
 
@@ -208,6 +211,7 @@ body {
 
 .tools {
   display: none;
+  transition: ease-in 0.2s;
 }
 
 .excontent:hover .tools {
@@ -1229,6 +1233,14 @@ body {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   margin-left: -10px;
+  
+  animation:animatezoom 0.2s
+
+}
+
+@keyframes animatezoom {
+  from {transform:scale(0)}
+  to{transform:scale(1)}
 }
 
 .submitSignOutRequest {
@@ -1260,6 +1272,7 @@ body {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   margin-top: 10px;
+  animation:animatezoom 0.2s
 }
 
 .modal-contentForAppInfo .appVersion {
@@ -1363,7 +1376,7 @@ body {
 }
 
 .splitUPMLeftt .splitUPMLeftHeader h4 {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -1375,7 +1388,7 @@ body {
 }
 
 .splitUPMLeftt .splitUPMLeftHeader span {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
@@ -1393,7 +1406,7 @@ body {
   margin-top: 23px;
 }
 .splitUPMLeftt .splitUPMLeftContent h5{
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 12px;
@@ -1404,7 +1417,7 @@ body {
 }
 
 .splitUPMLeftt .splitUPMLeftContent span {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -1419,7 +1432,7 @@ body {
 }
 
 .userHistories .userHistoryHead h3 {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -1442,7 +1455,7 @@ body {
 
 
 .userHistories .userHistoryTasks label {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;
@@ -1451,7 +1464,7 @@ body {
 }
 
 .userHistories .userHistoryTasks .workID {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -1459,7 +1472,7 @@ body {
 }
 
 .userHistories .userHistoryTasks .status {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -1475,7 +1488,7 @@ body {
 }
 
 .userHistories .userHistoryTasks p {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -1484,7 +1497,7 @@ body {
 }
 
 .navbarr .projectsDropDown h4, .navbarr #sprintTab h4, .navbarr #slackTab h4, .navbarr #themeTab h4 {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -1497,12 +1510,8 @@ body {
   margin-left: -50px;
 }
 
-.navbarr #themeTab .currentTheme {
-  margin-left: -55px;
-}
-
 .navbarr .projectsDropDown .loggedProject, .navbarr #sprintTab .loggedSprint, .navbarr #slackTab .slackStatus {
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -1519,7 +1528,7 @@ body {
   margin-left: -30px;
 }
 
-.projectsDropDown, .sprintDropDown, themeDropDown {
+.projectsDropDown, .sprintDropDown, .themeDropDown {
   position: relative;
 }
 
@@ -1547,7 +1556,7 @@ body {
 }
 
 .projectsDropDownContent p, .sprintDropDown .sprintDropDownContent p{
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -1568,15 +1577,25 @@ body {
 }
 
 .themeDropDown .themeDropDownContent .imgGrid{
-  margin-right: -5px;
+  margin-left: -18px;
   margin-top: 5px;
   margin-bottom: 3px;
-  padding-right: -2px;
+ 
+  
 }
 
-.themeDropDown .themeDropDownContent .imgGridBorder{
-  border: 1px solid black;
+.themeDropDown .themeDropDownContent .imgBtm {
+  width: 18px;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.8); */
+  margin-left: 18px;
 }
+
+
+.themeDropDown .themeDropDownContent .imgGrid img{ 
+  width: 30px;
+  height: 30px;
+}
+
 
 .themeDropDown .themeDropDownContent {
   margin-top: 3em;
@@ -1651,14 +1670,10 @@ body {
 
 .animateDD {
   animation: slideup 1s;
-  animation-direction: alternate-reverse;
-  display: none;
+  animation-direction: reverse;
+  
 }
 
-.ppSP {
-  animation: slideup 1s;
-  animation-direction: alternate-reverse;
-}
 
 @keyframes dropdown {
   0%  {margin-top: -500px;}
@@ -1666,8 +1681,6 @@ body {
 }
 
 @keyframes slideup {
-  0%  {margin-top: 3.1em;}
-  100%  {margin-top: -500px;}
+  0%  {margin-top: -500px;}
+  100%  {margin-top: 3.1em;}
 }
-
-
