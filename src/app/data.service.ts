@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 })
 export class DataService {
     
-  public _signUpurl = 'http://54.185.254.239:5000/scrum/api/scrumusers/';
-  public _loginurl = 'http://54.185.254.239:5000/scrum/api-token-auth/';
+  public _signUpurl = 'https://api.chatscrum.com/scrum/api/scrumusers/';
+  public _loginurl = 'https://api.chatscrum.com/scrum/api-token-auth/';
   public domain_name = '127.0.0.1:8000';
   public domain_protocol = 'https://';
   public websocket = 'wss://';
@@ -111,7 +111,7 @@ export class DataService {
     console.log(this.add_slack)
     //this.http.post(this.domain_protocol + this.domain_name + '/scrum/api/scrumusers/', JSON.stringify({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname}), this.httpOptions).subscribe(
     //console.log({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname})
-   this.http.post(this._signUpurl, JSON.stringify({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname}), this.httpOptions).subscribe(
+    this.http.post(this._signUpurl, JSON.stringify({'email': this.createuser_email, 'password': this.createuser_password, 'full_name': this.createuser_fullname, 'usertype': this.createuser_usertype, 'projname': this.createuser_projname}), this.httpOptions).subscribe(
         data => { 
           // this.slack_app_id = data['client_id']
           // if (this.createuser_usertype  == "Owner" && this.add_slack == true ) {
@@ -235,7 +235,7 @@ export class DataService {
   }
 
   loggedIn() {
-    return localStorage.getItem('token')
+    return sessionStorage.getItem('token')
   }
 
   
